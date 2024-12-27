@@ -36,6 +36,8 @@ function IP() {
   const [fragOff, setfragOff] = useState<number[]>(new Array(16).fill(0))
   // Time To Live
   const [ttl, setTtl] = useState<number[]>(new Array(8).fill(0))
+  // Protocol
+  const [protocol, setProtocol] = useState<number[]>(new Array(8).fill(0))
 
   return (
     <div className={styles.ip}>
@@ -46,6 +48,7 @@ function IP() {
       {getBitsUI(id, 'id', getReverseFn(id, setId))}
       {getBitsUI(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
       {getBitsUI(ttl, 'ttl', getReverseFn(ttl, setTtl))}
+      {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
     </div>
   )
 }
