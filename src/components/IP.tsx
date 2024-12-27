@@ -32,6 +32,8 @@ function IP() {
   const [tl, setTl] = useState<number[]>(new Array(16).fill(0))
   // Identification
   const [id, setId] = useState<number[]>(new Array(16).fill(0))
+  // Fragment offset
+  const [fragOff, setfragOff] = useState<number[]>(new Array(16).fill(0))
 
   return (
     <div className={styles.ip}>
@@ -40,6 +42,7 @@ function IP() {
       {getBitsUI(tos, 'tos', getReverseFn(tos, setTos))}
       {getBitsUI(tl, 'tl', getReverseFn(tl, setTl))}
       {getBitsUI(id, 'id', getReverseFn(id, setId))}
+      {getBitsUI(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
     </div>
   )
 }
