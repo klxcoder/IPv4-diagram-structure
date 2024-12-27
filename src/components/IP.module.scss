@@ -1,51 +1,9 @@
+@import "_background-colors.scss";
+
 .ip {
   padding: 2px;
   border: 1px solid red;
   display: grid;
   grid-template-columns: repeat(32, 1fr);
   gap: 2px;
-
-  .version {
-    background-color: green;
-  }
-
-  .ihl {
-    background-color: blue;
-  }
-
-  .tos {
-    background-color: pink;
-  }
-
-  .tl {
-    background-color: yellow;
-  }
-
-  .id {
-    background-color: blueviolet;
-  }
-
-  .fragOff {
-    background-color: teal;
-  }
-
-  .ttl {
-    background-color: hotpink;
-  }
-
-  .protocol {
-    background-color: lawngreen;
-  }
-
-  .checksum {
-    background-color: salmon;
-  }
-
-  .source {
-    background-color: royalblue;
-  }
-
-  .destination {
-    background-color: orange;
-  }
 }
