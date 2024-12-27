@@ -42,6 +42,8 @@ function IP() {
   const [checksum, setChecksum] = useState<number[]>(new Array(16).fill(0))
   // Source Address
   const [source, setSource] = useState<number[]>(new Array(32).fill(0))
+  // Destination Address
+  const [destination, setDestination] = useState<number[]>(new Array(32).fill(0))
 
   return (
     <div className={styles.ip}>
@@ -55,6 +57,7 @@ function IP() {
       {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
       {getBitsUI(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
       {getBitsUI(source, 'source', getReverseFn(source, setSource))}
+      {getBitsUI(destination, 'destination', getReverseFn(destination, setDestination))}
     </div>
   )
 }
