@@ -30,6 +30,8 @@ function IP() {
   const [tos, setTos] = useState<number[]>(new Array(8).fill(0))
   // All the bits
   const [tl, setTl] = useState<number[]>(new Array(16).fill(0))
+  // Identification
+  const [id, setId] = useState<number[]>(new Array(16).fill(0))
 
   return (
     <div className={styles.ip}>
@@ -37,6 +39,7 @@ function IP() {
       {getBitsUI(ihl, 'ihl', getReverseFn(ihl, setIhl))}
       {getBitsUI(tos, 'tos', getReverseFn(tos, setTos))}
       {getBitsUI(tl, 'tl', getReverseFn(tl, setTl))}
+      {getBitsUI(id, 'id', getReverseFn(id, setId))}
     </div>
   )
 }
