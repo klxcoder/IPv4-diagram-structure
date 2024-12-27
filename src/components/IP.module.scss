@@ -5,7 +5,19 @@
   grid-template-columns: repeat(32, 1fr);
   gap: 2px;
 
-  .bit {
-    border: 1px solid green;
+  .version {
+    background-color: green;
+  }
+
+  .ihl {
+    background-color: blue;
+  }
+
+  .tos {
+    background-color: pink;
+  }
+
+  .tl {
+    background-color: yellow;
   }
 }
