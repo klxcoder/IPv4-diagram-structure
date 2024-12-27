@@ -40,6 +40,8 @@ function IP() {
   const [protocol, setProtocol] = useState<number[]>(new Array(8).fill(0))
   // Header Checksum
   const [checksum, setChecksum] = useState<number[]>(new Array(16).fill(0))
+  // Source Address
+  const [source, setSource] = useState<number[]>(new Array(32).fill(0))
 
   return (
     <div className={styles.ip}>
@@ -52,6 +54,7 @@ function IP() {
       {getBitsUI(ttl, 'ttl', getReverseFn(ttl, setTtl))}
       {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
       {getBitsUI(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
+      {getBitsUI(source, 'source', getReverseFn(source, setSource))}
     </div>
   )
 }
