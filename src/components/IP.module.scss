@@ -1,3 +1,11 @@
 .ip {
-  border: 10px solid red;
+  padding: 2px;
+  border: 1px solid red;
+  display: grid;
+  grid-template-columns: repeat(32, 1fr);
+  gap: 2px;
+
+  .bit {
+    border: 1px solid green;
+  }
 }
