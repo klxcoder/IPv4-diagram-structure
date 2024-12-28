@@ -10,6 +10,7 @@ const getBitsUI = (
   onClick: (index: number) => void,
 ) => bits.map((bit, index) => (
   <button
+    key={index}
     className={backgroundColors[css]}
     onClick={() => onClick(index)}
   >{bit}</button>
@@ -70,7 +71,12 @@ function IP() {
         <div className={styles.title}>
           Explain
         </div>
-        <div className={styles.explain}></div>
+        <div className={styles.explain}>
+          <div>IP Version</div>
+          <div>{IP_VERSION.join('')}</div>
+          <div>Internet Header Length</div>
+          <div>{ihl.join('')}</div>
+        </div>
       </div>
     </div>
   )
