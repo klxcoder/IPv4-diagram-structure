@@ -48,17 +48,22 @@ function IP() {
 
   return (
     <div className={styles.ip}>
-      {getBitsUI(IP_VERSION, 'version', () => { })}
-      {getBitsUI(ihl, 'ihl', getReverseFn(ihl, setIhl))}
-      {getBitsUI(tos, 'tos', getReverseFn(tos, setTos))}
-      {getBitsUI(tl, 'tl', getReverseFn(tl, setTl))}
-      {getBitsUI(id, 'id', getReverseFn(id, setId))}
-      {getBitsUI(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
-      {getBitsUI(ttl, 'ttl', getReverseFn(ttl, setTtl))}
-      {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
-      {getBitsUI(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
-      {getBitsUI(source, 'source', getReverseFn(source, setSource))}
-      {getBitsUI(destination, 'destination', getReverseFn(destination, setDestination))}
+      <div className={styles.IpDiagram}>
+        {getBitsUI(IP_VERSION, 'version', () => { })}
+        {getBitsUI(ihl, 'ihl', getReverseFn(ihl, setIhl))}
+        {getBitsUI(tos, 'tos', getReverseFn(tos, setTos))}
+        {getBitsUI(tl, 'tl', getReverseFn(tl, setTl))}
+        {getBitsUI(id, 'id', getReverseFn(id, setId))}
+        {getBitsUI(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
+        {getBitsUI(ttl, 'ttl', getReverseFn(ttl, setTtl))}
+        {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
+        {getBitsUI(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
+        {getBitsUI(source, 'source', getReverseFn(source, setSource))}
+        {getBitsUI(destination, 'destination', getReverseFn(destination, setDestination))}
+      </div>
+      <div className={styles.IpExplain}>
+        explain
+      </div>
     </div>
   )
 }
