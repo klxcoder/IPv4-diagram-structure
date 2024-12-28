@@ -36,7 +36,7 @@ const getExplainRow = (
   <div className={styles.dec}>{bits.length <= 32 ? BinToDec(bits) : '...'}</div>
 </>)
 
-const BinToDec = (bin: number[]) => parseInt(bin.join(''), 2)
+const BinToDec = (bin: number[]) => bin.length > 0 ? parseInt(bin.join(''), 2) : 0
 
 function IP() {
   // Internet Header Length
@@ -104,7 +104,7 @@ function IP() {
           {getExplainRow('Header Checksum', checksum, 'checksum')}
           {getExplainRow('Source Address', source, 'source')}
           {getExplainRow('Destination Address', destination, 'destination')}
-          {getExplainRow('Options', options, 'options')}
+          {options.length > 0 ? getExplainRow('Options', options, 'options') : ''}
         </div>
       </div>
       <div className={styles.notes}>
