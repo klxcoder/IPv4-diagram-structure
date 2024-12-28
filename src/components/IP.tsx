@@ -137,18 +137,18 @@ function IP() {
           {options.length > 0 ? getExplainRow('Options', options, 'options') : ''}
         </div>
       </div>
+      <div className={styles.errors}>
+        <div className={styles.title}>
+          Errors
+        </div>
+        {errors.length > 0 ? errors.map((error, index) => <div key={index}>{error}</div>) : 'No errors in the IP header'}
+      </div>
       <div className={styles.notes}>
         <div className={styles.title}>
           Notes
         </div>
         <div className={styles.note}>Minimum IHL Value: 5</div>
         <div className={styles.note}>Minimum IHL Value: 15</div>
-      </div>
-      <div className={styles.errors}>
-        <div className={styles.title}>
-          Errors
-        </div>
-        {errors.length > 0 ? errors.map((error, index) => <div key={index}>{error}</div>) : 'No errors in the IP header'}
       </div>
     </div>
   )

@@ -63,18 +63,6 @@
     }
   }
 
-  .notes {
-    @extend .card;
-
-    .title {
-      font-weight: bold;
-      font-size: 1.3rem;
-      text-align: center;
-    }
-
-    .note {}
-  }
-
   .errors {
     @extend .card;
 
@@ -85,5 +73,17 @@
     }
 
     .error {}
+  }
+
+  .notes {
+    @extend .card;
+
+    .title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .note {}
   }
 }
