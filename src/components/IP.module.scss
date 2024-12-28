@@ -26,6 +26,7 @@
   }
 
   .IpExplain {
+    padding: 2px;
     border: 1px solid red;
 
     .title {
@@ -46,6 +47,9 @@
   }
 
   .notes {
+    padding: 2px;
+    border: 1px solid red;
+
     .title {
       font-weight: bold;
       font-size: 1.3rem;
@@ -56,6 +60,9 @@
   }
 
   .errors {
+    padding: 2px;
+    border: 1px solid red;
+
     .title {
       font-weight: bold;
       font-size: 1.3rem;
