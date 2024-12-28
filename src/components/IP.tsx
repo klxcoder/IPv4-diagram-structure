@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import styles from './IP.module.scss'
+import backgroundColors from './background-colors.module.scss'
 
 const IP_VERSION = [0, 1, 0, 0]
 
@@ -9,7 +10,7 @@ const getBitsUI = (
   onClick: (index: number) => void,
 ) => bits.map((bit, index) => (
   <button
-    className={styles[css]}
+    className={backgroundColors[css]}
     onClick={() => onClick(index)}
   >{bit}</button>
 ))
