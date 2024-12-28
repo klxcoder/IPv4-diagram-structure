@@ -1,7 +1,6 @@
 .ip {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   font-family: 'Courier New', Courier, monospace;
 
@@ -54,5 +53,15 @@
     }
 
     .note {}
+  }
+
+  .errors {
+    .title {
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .error {}
   }
 }

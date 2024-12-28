@@ -114,6 +114,12 @@ function IP() {
         <div className={styles.note}>Minimum IHL Value: 5</div>
         <div className={styles.note}>Minimum IHL Value: 15</div>
       </div>
+      <div className={styles.errors}>
+        <div className={styles.title}>
+          Errors
+        </div>
+        <div className={styles.note}>Example Error</div>
+      </div>
     </div>
   )
 }
