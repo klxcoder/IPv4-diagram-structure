@@ -79,6 +79,18 @@ function IP() {
   }, [ihl])
 
   useEffect(() => {
+    const bits: number[] = [...IP_VERSION, ...ihl, ...tos, ...tl, ...id, ...fragOff, ...ttl, ...protocol, ...source, ...destination, ...options]
+    let sum = 0
+    let index = 0;
+    while (index < bits.length) {
+      sum += BinToDec(bits.slice(index, index + 16))
+      if (sum > 0xFFFF) sum = sum - 0xFFFF
+      index += 16;
+    }
+    setChecksum(DecToBin(sum, 16).map(bit => bit === 1 ? 0 : 1))
+  }, [ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options])
+
+  useEffect(() => {
     const errors: string[] = []
     if (BinToDec(ihl) < 5) {
       errors.push('IHL must be greater than or equal to 5')
