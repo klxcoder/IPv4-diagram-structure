@@ -33,7 +33,10 @@ const getExplainRow = (
   css: string,
 ) => (<>
   <div>{text}</div>
-  <div className={backgroundColors[css]}>{bits.slice(0, 32).join('')}{bits.length > 32 ? '...' : ''}</div>
+  <div className={styles.bits}>{bits.slice(0, 32).map(bit => <button
+    className={backgroundColors[css]}
+    disabled
+  >{bit}</button>)}{bits.length > 32 ? '...' : ''}</div>
   <div className={styles.dec}>{bits.length <= 32 ? BinToDec(bits) : '...'}</div>
 </>)
 
