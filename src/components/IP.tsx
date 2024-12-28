@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './IP.module.scss'
 import backgroundColors from './background-colors.module.scss'
 
@@ -32,8 +32,8 @@ const getExplainRow = (
   css: string,
 ) => (<>
   <div>{text}</div>
-  <div className={backgroundColors[css]}>{bits.join('')}</div>
-  <div>{BinToDec(bits)}</div>
+  <div className={backgroundColors[css]}>{bits.slice(0, 32).join('')}{bits.length > 32 ? '...' : ''}</div>
+  <div className={styles.dec}>{bits.length <= 32 ? BinToDec(bits) : '...'}</div>
 </>)
 
 const BinToDec = (bin: number[]) => parseInt(bin.join(''), 2)
@@ -59,6 +59,13 @@ function IP() {
   const [source, setSource] = useState<number[]>(new Array(32).fill(0))
   // Destination Address
   const [destination, setDestination] = useState<number[]>(new Array(32).fill(0))
+  // Options
+  const [options, setOptions] = useState<number[]>(new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0))
+
+  useEffect(() => {
+    const options = new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0)
+    setOptions(options)
+  }, [ihl])
 
   return (
     <div className={styles.ip}>
@@ -78,6 +85,7 @@ function IP() {
           {getDiagramBits(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
           {getDiagramBits(source, 'source', getReverseFn(source, setSource))}
           {getDiagramBits(destination, 'destination', getReverseFn(destination, setDestination))}
+          {getDiagramBits(options, 'options', getReverseFn(options, setOptions))}
         </div>
       </div>
       <div className={styles.IpExplain}>
@@ -96,6 +104,7 @@ function IP() {
           {getExplainRow('Header Checksum', checksum, 'checksum')}
           {getExplainRow('Source Address', source, 'source')}
           {getExplainRow('Destination Address', destination, 'destination')}
+          {getExplainRow('Options', options, 'options')}
         </div>
       </div>
       <div className={styles.notes}>

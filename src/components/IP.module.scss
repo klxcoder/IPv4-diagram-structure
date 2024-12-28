@@ -39,6 +39,10 @@
       display: grid;
       grid-template-columns: repeat(3, auto);
       gap: 2px;
+
+      .dec {
+        text-align: center;
+      }
     }
   }
 
