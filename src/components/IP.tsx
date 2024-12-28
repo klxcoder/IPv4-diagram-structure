@@ -32,7 +32,10 @@ const getExplainRow = (
 ) => (<>
   <div>{text}</div>
   <div className={backgroundColors[css]}>{bits.join('')}</div>
+  <div>{BinToDec(bits)}</div>
 </>)
+
+const BinToDec = (bin: number[]) => parseInt(bin.join(''), 2)
 
 function IP() {
   // Internet Header Length
