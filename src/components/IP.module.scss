@@ -7,9 +7,16 @@
   .IpDiagram {
     padding: 2px;
     border: 1px solid red;
-    display: grid;
-    grid-template-columns: repeat(32, 1fr);
-    gap: 2px;
+
+    .title {
+      text-align: center;
+    }
+
+    .diagram {
+      display: grid;
+      grid-template-columns: repeat(32, 1fr);
+      gap: 2px;
+    }
   }
 
   .IpExplain {
