@@ -25,12 +25,21 @@ const getReverseFn = (
   setValue(newValue)
 }
 
+const getExplainRow = (
+  text: string,
+  bits: number[],
+  css: string,
+) => (<>
+  <div>{text}</div>
+  <div className={backgroundColors[css]}>{bits.join('')}</div>
+</>)
+
 function IP() {
   // Internet Header Length
   const [ihl, setIhl] = useState<number[]>([0, 1, 1, 1])
   // Type of Service
   const [tos, setTos] = useState<number[]>(new Array(8).fill(0))
-  // All the bits
+  // Total Length
   const [tl, setTl] = useState<number[]>(new Array(16).fill(0))
   // Identification
   const [id, setId] = useState<number[]>(new Array(16).fill(0))
@@ -72,10 +81,17 @@ function IP() {
           Explain
         </div>
         <div className={styles.explain}>
-          <div>IP Version</div>
-          <div>{IP_VERSION.join('')}</div>
-          <div>Internet Header Length</div>
-          <div>{ihl.join('')}</div>
+          {getExplainRow('IP Version', IP_VERSION, 'version')}
+          {getExplainRow('Internet Header Length', ihl, 'ihl')}
+          {getExplainRow('Type of Service', tos, 'tos')}
+          {getExplainRow('Total Length', tl, 'tl')}
+          {getExplainRow('Identification', id, 'id')}
+          {getExplainRow('Fragment offset', fragOff, 'fragOff')}
+          {getExplainRow('Time To Live', ttl, 'ttl')}
+          {getExplainRow('Protocol', protocol, 'protocol')}
+          {getExplainRow('Header Checksum', checksum, 'checksum')}
+          {getExplainRow('Source Address', source, 'source')}
+          {getExplainRow('Destination Address', destination, 'destination')}
         </div>
       </div>
     </div>
