@@ -4,7 +4,7 @@ import backgroundColors from './background-colors.module.scss'
 
 const IP_VERSION = [0, 1, 0, 0]
 
-const getBitsUI = (
+const getDiagramBits = (
   bits: number[],
   css: string,
   onClick: (index: number) => void,
@@ -54,17 +54,17 @@ function IP() {
           Diagram
         </div>
         <div className={styles.diagram}>
-          {getBitsUI(IP_VERSION, 'version', () => { })}
-          {getBitsUI(ihl, 'ihl', getReverseFn(ihl, setIhl))}
-          {getBitsUI(tos, 'tos', getReverseFn(tos, setTos))}
-          {getBitsUI(tl, 'tl', getReverseFn(tl, setTl))}
-          {getBitsUI(id, 'id', getReverseFn(id, setId))}
-          {getBitsUI(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
-          {getBitsUI(ttl, 'ttl', getReverseFn(ttl, setTtl))}
-          {getBitsUI(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
-          {getBitsUI(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
-          {getBitsUI(source, 'source', getReverseFn(source, setSource))}
-          {getBitsUI(destination, 'destination', getReverseFn(destination, setDestination))}
+          {getDiagramBits(IP_VERSION, 'version', () => { })}
+          {getDiagramBits(ihl, 'ihl', getReverseFn(ihl, setIhl))}
+          {getDiagramBits(tos, 'tos', getReverseFn(tos, setTos))}
+          {getDiagramBits(tl, 'tl', getReverseFn(tl, setTl))}
+          {getDiagramBits(id, 'id', getReverseFn(id, setId))}
+          {getDiagramBits(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
+          {getDiagramBits(ttl, 'ttl', getReverseFn(ttl, setTtl))}
+          {getDiagramBits(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
+          {getDiagramBits(checksum, 'checksum', getReverseFn(checksum, setChecksum))}
+          {getDiagramBits(source, 'source', getReverseFn(source, setSource))}
+          {getDiagramBits(destination, 'destination', getReverseFn(destination, setDestination))}
         </div>
       </div>
       <div className={styles.IpExplain}>
