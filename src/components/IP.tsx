@@ -81,8 +81,14 @@ function IP() {
     if (BinToDec(tl) < 4 * BinToDec(ihl)) {
       errors.push('Total Length must be greater than or equal to  4 * IHL')
     }
+    const expectedChecksum = getChecksum(IP_VERSION, ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options)
+    if (BinToDec(checksum) !== BinToDec(expectedChecksum)) {
+      errors.push('Checksum does not match')
+      errors.push('Current Checksum : ' + checksum.join(''))
+      errors.push('Expected Checksum: ' + expectedChecksum.join(''))
+    }
     setErrors(errors)
-  }, [ihl, tl])
+  }, [ihl, tos, tl, id, fragOff, ttl, protocol, checksum, source, destination, options])
 
   return (
     <div className={styles.ip}>
