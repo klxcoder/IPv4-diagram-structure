@@ -98,6 +98,13 @@ function IP() {
           {getExplainRow('Destination Address', destination, 'destination')}
         </div>
       </div>
+      <div className={styles.notes}>
+        <div className={styles.title}>
+          Notes
+        </div>
+        <div className={styles.note}>Minimum IHL Value: 5</div>
+        <div className={styles.note}>Minimum IHL Value: 15</div>
+      </div>
     </div>
   )
 }
