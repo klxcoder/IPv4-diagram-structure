@@ -60,8 +60,14 @@ function IP() {
   const [destination, setDestination] = useState<number[]>(new Array(32).fill(0))
   // Options
   const [options, setOptions] = useState<number[]>(new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0))
+  // Payload length
+  const [payloadLength, setPayloadLength] = useState<number>(0)
   // Errors
   const [errors, setErrors] = useState<string[]>([])
+
+  useEffect(() => {
+    setPayloadLength(BinToDec(tl) - BinToDec(ihl) * 4)
+  }, [tl, ihl])
 
   useEffect(() => {
     const options = new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0)
@@ -109,7 +115,7 @@ function IP() {
           {getDiagramBits(source, 'source', getReverseFn(source, setSource))}
           {getDiagramBits(destination, 'destination', getReverseFn(destination, setDestination))}
           {getDiagramBits(options, 'options', getReverseFn(options, setOptions))}
-          <div className={styles.payload}>payload contains {BinToDec(tl) - BinToDec(ihl) * 4} bytes</div>
+          {payloadLength > 0 ? <div className={styles.payload}>payload contains {payloadLength} bytes</div> : ''}
         </div>
       </div>
       <div className={styles.IpExplain}>
