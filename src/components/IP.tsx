@@ -141,7 +141,10 @@ function IP() {
         <div className={styles.title}>
           Errors
         </div>
-        {errors.length > 0 ? errors.map((error, index) => <div key={index}>{error}</div>) : 'No errors in the IP header'}
+        {errors.length > 0 ? errors.map((error, index) => <div
+          className={styles.error}
+          key={index}
+        >{error}</div>) : 'No errors in the IP header'}
       </div>
       <div className={styles.notes}>
         <div className={styles.title}>
