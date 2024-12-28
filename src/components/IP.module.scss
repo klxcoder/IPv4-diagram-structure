@@ -19,6 +19,10 @@
       display: grid;
       grid-template-columns: repeat(32, 1fr);
       gap: 2px;
+
+      button {
+        color: black;
+      }
     }
   }
 

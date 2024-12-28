@@ -13,6 +13,7 @@ const getDiagramBits = (
     key={index}
     className={backgroundColors[css]}
     onClick={() => onClick(index)}
+    disabled={css === 'version'}
   >{bit}</button>
 ))
 
