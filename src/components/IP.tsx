@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import styles from './IP.module.scss'
 import backgroundColors from './background-colors.module.scss'
 
@@ -61,6 +61,24 @@ function IP() {
   const [destination, setDestination] = useState<number[]>(new Array(32).fill(0))
   // Options
   const [options, setOptions] = useState<number[]>(new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0))
+  // Errors
+  const [errors, setErrors] = useState<string[]>([])
+
+  useEffect(() => {
+    const options = new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0)
+    setOptions(options)
+  }, [ihl])
+
+  useEffect(() => {
+    const errors: string[] = []
+    if (BinToDec(ihl) < 5) {
+      errors.push('IHL must be greater than or equal to 5')
+    }
+    if (BinToDec(tl) < 4 * BinToDec(ihl)) {
+      errors.push('Total Length must be greater than or equal to  4 * IHL')
+    }
+    setErrors(errors)
+  }, [ihl, tl])
 
   return (
     <div className={styles.ip}>
@@ -113,12 +131,7 @@ function IP() {
         <div className={styles.title}>
           Errors
         </div>
-        <div className={styles.note}>
-          {BinToDec(ihl) < 5 ? 'IHL must be greater than or equal to 5' : ''}
-        </div>
-        <div className={styles.note}>
-          {BinToDec(tl) < 4 * BinToDec(ihl) ? 'Total Length must be greater than or equal to  4 * IHL' : ''}
-        </div>
+        {errors.length > 0 ? errors.map((error, index) => <div key={index}>{error}</div>) : 'No errors in the IP header'}
       </div>
     </div>
   )
