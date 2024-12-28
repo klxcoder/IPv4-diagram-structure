@@ -38,6 +38,15 @@ const getExplainRow = (
 
 const BinToDec = (bin: number[]) => bin.length > 0 ? parseInt(bin.join(''), 2) : 0
 
+const DecToBin = (dec: number, length: number) => {
+  const arr: number[] = []
+  while (dec > 0 || arr.length < length) {
+    arr.push(dec % 2)
+    dec = Math.floor(dec / 2)
+  }
+  return arr.reverse()
+}
+
 function IP() {
   // Internet Header Length
   const [ihl, setIhl] = useState<number[]>([0, 1, 1, 1])
