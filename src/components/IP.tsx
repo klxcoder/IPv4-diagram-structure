@@ -99,6 +99,7 @@ function IP() {
           {getDiagramBits(source, 'source', getReverseFn(source, setSource))}
           {getDiagramBits(destination, 'destination', getReverseFn(destination, setDestination))}
           {getDiagramBits(options, 'options', getReverseFn(options, setOptions))}
+          <div className={styles.payload}>payload contains {BinToDec(tl) - BinToDec(ihl) * 4} bytes</div>
         </div>
       </div>
       <div className={styles.IpExplain}>
