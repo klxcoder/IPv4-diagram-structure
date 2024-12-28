@@ -4,9 +4,14 @@
   gap: 10px;
   font-family: 'Courier New', Courier, monospace;
 
+  .card {
+    padding: 10px;
+    border: 1px solid gray;
+    border-radius: 10px;
+  }
+
   .IpDiagram {
-    padding: 2px;
-    border: 1px solid red;
+    @extend .card;
 
     .title {
       font-weight: bold;
@@ -26,8 +31,7 @@
   }
 
   .IpExplain {
-    padding: 2px;
-    border: 1px solid red;
+    @extend .card;
 
     .title {
       font-weight: bold;
@@ -47,8 +51,7 @@
   }
 
   .notes {
-    padding: 2px;
-    border: 1px solid red;
+    @extend .card;
 
     .title {
       font-weight: bold;
@@ -60,8 +63,7 @@
   }
 
   .errors {
-    padding: 2px;
-    border: 1px solid red;
+    @extend .card;
 
     .title {
       font-weight: bold;
