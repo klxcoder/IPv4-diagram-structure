@@ -46,7 +46,7 @@ function IP() {
   // Type of Service
   const [tos, setTos] = useState<number[]>(new Array(8).fill(0))
   // Total Length
-  const [tl, setTl] = useState<number[]>(new Array(16).fill(0))
+  const [tl, setTl] = useState<number[]>([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1])
   // Identification
   const [id, setId] = useState<number[]>(new Array(16).fill(0))
   // Flags
@@ -56,7 +56,7 @@ function IP() {
   // Time To Live
   const [ttl, setTtl] = useState<number[]>(new Array(8).fill(0))
   // Protocol
-  const [protocol, setProtocol] = useState<number[]>(new Array(8).fill(0))
+  const [protocol, setProtocol] = useState<number[]>([0, 0, 0, 0, 0, 1, 1, 0])
   // Header Checksum
   const [checksum, setChecksum] = useState<number[]>(new Array(16).fill(0))
   // Source Address
