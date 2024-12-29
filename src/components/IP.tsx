@@ -105,14 +105,17 @@ function IP() {
 
   useEffect(() => {
     const notes: string[] = []
-    if (BinToDec(protocol) === 1) {
-      notes.push('Protocol is ICMP')
+    const protocolMap: { [key: number]: string } = {
+      1: 'ICMP',
+      2: 'IGMP',
+      6: 'TCP',
+      8: 'EGP',
+      17: 'UDP',
+      47: 'GRE',
     }
-    if (BinToDec(protocol) === 6) {
-      notes.push('Protocol is TCP')
-    }
-    if (BinToDec(protocol) === 17) {
-      notes.push('Protocol is UDP')
+    const protocolDec = BinToDec(protocol)
+    if (protocolMap[protocolDec]) {
+      notes.push('Protocol is ' + protocolMap[protocolDec])
     }
     setNotes(notes)
   }, [protocol])
