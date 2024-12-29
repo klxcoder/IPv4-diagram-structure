@@ -1,5 +1,7 @@
 export const BinToDec = (bin: number[]) => bin.length > 0 ? parseInt(bin.join(''), 2) : 0
 
+export const BinToDecIP = (bin: number[]) => `${BinToDec(bin.slice(0, 8))}.${BinToDec(bin.slice(8, 16))}.${BinToDec(bin.slice(16, 24))}.${BinToDec(bin.slice(24, 32))}`
+
 /**
  * Convert a decimal number to a binary array of a given length.
  * The binary array is in big-endian order (most significant bit first).

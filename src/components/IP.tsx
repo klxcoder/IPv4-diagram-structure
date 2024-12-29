@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import styles from './IP.module.scss'
 import backgroundColors from './background-colors.module.scss'
-import { BinToDec, getChecksum } from '../utils/utils'
+import { BinToDec, BinToDecIP, getChecksum } from '../utils/utils'
 
 const IP_VERSION = [0, 1, 0, 0]
 
@@ -37,7 +37,15 @@ const getExplainRow = (
     className={backgroundColors[css]}
     disabled
   >{bit}</button>)}{bits.length > 32 ? '...' : ''}</div>
-  <div className={styles.dec}>{bits.length <= 32 ? BinToDec(bits) : '...'}</div>
+  <div className={styles.dec}>{(() => {
+    switch (css) {
+      case 'source':
+        return BinToDecIP(bits)
+      case 'destination':
+        return BinToDecIP(bits)
+    }
+    return bits.length <= 32 ? BinToDec(bits) : '...'
+  })()}</div>
 </>)
 
 function IP() {
