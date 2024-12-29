@@ -60,6 +60,10 @@
       grid-template-columns: repeat(3, auto);
       gap: 2px;
 
+      .header {
+        font-weight: bold;
+      }
+
       .bits {
         button {
           padding: 2px;

@@ -126,6 +126,9 @@ function IP() {
           Explain
         </div>
         <div className={styles.explain}>
+          <div className={styles.header}>Field</div>
+          <div className={styles.header}>Binary bits</div>
+          <div className={styles.header}>Decimal value</div>
           {getExplainRow('IP Version', IP_VERSION, 'version')}
           {getExplainRow('Internet Header Length', ihl, 'ihl')}
           {getExplainRow('Type of Service', tos, 'tos')}
