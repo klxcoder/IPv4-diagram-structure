@@ -66,11 +66,11 @@ function IP() {
   // Protocol
   const [protocol, setProtocol] = useState<number[]>([0, 0, 0, 0, 0, 1, 1, 0])
   // Header Checksum
-  const [checksum, setChecksum] = useState<number[]>(new Array(16).fill(0))
+  const [checksum, setChecksum] = useState<number[]>(new Array(32).fill(0))
   // Source Address
-  const [source, setSource] = useState<number[]>(new Array(32).fill(0))
+  const [source, setSource] = useState<number[]>("11000000101010000000000100001010".split('').map(bit => parseInt(bit)))
   // Destination Address
-  const [destination, setDestination] = useState<number[]>(new Array(32).fill(0))
+  const [destination, setDestination] = useState<number[]>("11001011000000000111000100000101".split('').map(bit => parseInt(bit)))
   // Options
   const [options, setOptions] = useState<number[]>(new Array(32 * Math.max(BinToDec(ihl) - 5, 0)).fill(0))
   // Payload length
