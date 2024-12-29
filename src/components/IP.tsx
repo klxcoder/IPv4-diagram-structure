@@ -69,6 +69,8 @@ function IP() {
   const [payloadLength, setPayloadLength] = useState<number>(0)
   // Errors
   const [errors, setErrors] = useState<string[]>([])
+  // Notes
+  const [notes, setNotes] = useState<string[]>([])
 
   useEffect(() => {
     setPayloadLength(BinToDec(tl) - BinToDec(ihl) * 4)
@@ -100,6 +102,20 @@ function IP() {
     }
     setErrors(errors)
   }, [ihl, tos, tl, id, flags, fragOff, ttl, protocol, checksum, source, destination, options])
+
+  useEffect(() => {
+    const notes: string[] = []
+    if (BinToDec(protocol) === 1) {
+      notes.push('Protocol is ICMP')
+    }
+    if (BinToDec(protocol) === 6) {
+      notes.push('Protocol is TCP')
+    }
+    if (BinToDec(protocol) === 17) {
+      notes.push('Protocol is UDP')
+    }
+    setNotes(notes)
+  }, [protocol])
 
   return (
     <div className={styles.ip}>
@@ -160,8 +176,10 @@ function IP() {
         <div className={styles.title}>
           Notes
         </div>
-        <div className={styles.note}>Minimum IHL Value: 5</div>
-        <div className={styles.note}>Minimum IHL Value: 15</div>
+        {notes.length > 0 ? notes.map((note, index) => <div
+          className={styles.note}
+          key={index}
+        >{note}</div>) : 'No notes'}
       </div>
     </div>
   )
