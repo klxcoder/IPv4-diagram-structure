@@ -15,6 +15,7 @@ export const getChecksum: (
   tos: number[],
   tl: number[],
   id: number[],
+  flags: number[],
   fragOff: number[],
   ttl: number[],
   protocol: number[],
@@ -22,9 +23,9 @@ export const getChecksum: (
   destination: number[],
   options: number[],
 ) => number[] = (
-  IP_VERSION, ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options,
+  IP_VERSION, ihl, tos, tl, id, flags, fragOff, ttl, protocol, source, destination, options,
 ) => {
-    const bits: number[] = [...IP_VERSION, ...ihl, ...tos, ...tl, ...id, ...fragOff, ...ttl, ...protocol, ...source, ...destination, ...options]
+    const bits: number[] = [...IP_VERSION, ...ihl, ...tos, ...tl, ...id, ...flags, ...fragOff, ...ttl, ...protocol, ...source, ...destination, ...options]
     let sum = 0
     let index = 0;
     while (index < bits.length) {

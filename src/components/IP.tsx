@@ -49,8 +49,10 @@ function IP() {
   const [tl, setTl] = useState<number[]>(new Array(16).fill(0))
   // Identification
   const [id, setId] = useState<number[]>(new Array(16).fill(0))
+  // Flags
+  const [flags, setFlags] = useState<number[]>(new Array(3).fill(0))
   // Fragment offset
-  const [fragOff, setfragOff] = useState<number[]>(new Array(16).fill(0))
+  const [fragOff, setfragOff] = useState<number[]>(new Array(13).fill(0))
   // Time To Live
   const [ttl, setTtl] = useState<number[]>(new Array(8).fill(0))
   // Protocol
@@ -78,9 +80,9 @@ function IP() {
   }, [ihl])
 
   useEffect(() => {
-    const checksum = getChecksum(IP_VERSION, ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options)
+    const checksum = getChecksum(IP_VERSION, ihl, tos, tl, id, flags, fragOff, ttl, protocol, source, destination, options)
     setChecksum(checksum)
-  }, [ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options])
+  }, [ihl, tos, tl, id, flags, fragOff, ttl, protocol, source, destination, options])
 
   useEffect(() => {
     const errors: string[] = []
@@ -90,14 +92,14 @@ function IP() {
     if (BinToDec(tl) < 4 * BinToDec(ihl)) {
       errors.push('Total Length must be greater than or equal to  4 * IHL')
     }
-    const expectedChecksum = getChecksum(IP_VERSION, ihl, tos, tl, id, fragOff, ttl, protocol, source, destination, options)
+    const expectedChecksum = getChecksum(IP_VERSION, ihl, tos, tl, id, flags, fragOff, ttl, protocol, source, destination, options)
     if (BinToDec(checksum) !== BinToDec(expectedChecksum)) {
       errors.push('Checksum does not match')
       errors.push('Current Checksum : ' + checksum.join(''))
       errors.push('Expected Checksum: ' + expectedChecksum.join(''))
     }
     setErrors(errors)
-  }, [ihl, tos, tl, id, fragOff, ttl, protocol, checksum, source, destination, options])
+  }, [ihl, tos, tl, id, flags, fragOff, ttl, protocol, checksum, source, destination, options])
 
   return (
     <div className={styles.ip}>
@@ -111,6 +113,7 @@ function IP() {
           {getDiagramBits(tos, 'tos', getReverseFn(tos, setTos))}
           {getDiagramBits(tl, 'tl', getReverseFn(tl, setTl))}
           {getDiagramBits(id, 'id', getReverseFn(id, setId))}
+          {getDiagramBits(flags, 'flags', getReverseFn(flags, setFlags))}
           {getDiagramBits(fragOff, 'fragOff', getReverseFn(fragOff, setfragOff))}
           {getDiagramBits(ttl, 'ttl', getReverseFn(ttl, setTtl))}
           {getDiagramBits(protocol, 'protocol', getReverseFn(protocol, setProtocol))}
@@ -134,6 +137,7 @@ function IP() {
           {getExplainRow('Type of Service', tos, 'tos')}
           {getExplainRow('Total Length', tl, 'tl')}
           {getExplainRow('Identification', id, 'id')}
+          {getExplainRow('Flags', flags, 'flags')}
           {getExplainRow('Fragment offset', fragOff, 'fragOff')}
           {getExplainRow('Time To Live', ttl, 'ttl')}
           {getExplainRow('Protocol', protocol, 'protocol')}
