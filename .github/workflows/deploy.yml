@@ -29,4 +29,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
-          publish_repo: YOUR_USERNAME/my-app
+          publish_repo: klxcoder/IPv4-diagram-structure
