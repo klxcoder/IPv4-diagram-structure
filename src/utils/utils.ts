@@ -1,5 +1,11 @@
 export const BinToDec = (bin: number[]) => bin.length > 0 ? parseInt(bin.join(''), 2) : 0
 
+/**
+ * Convert a decimal number to a binary array of a given length.
+ * The binary array is in big-endian order (most significant bit first).
+ * @param dec The decimal number to convert
+ * @param length The length of the binary array to return
+ */
 const DecToBin = (dec: number, length: number) => {
   const arr: number[] = []
   while (dec > 0 || arr.length < length) {
@@ -9,6 +15,24 @@ const DecToBin = (dec: number, length: number) => {
   return arr.reverse()
 }
 
+/**
+ * Compute the checksum of a list of binary arrays, each representing a part of an IPv4 header.
+ * The checksum is computed by summing the 16-bit words of the header and then taking the one's
+ * complement of the sum.
+ * @param IP_VERSION The version part of the header.
+ * @param ihl The Internet Header Length part of the header.
+ * @param tos The Type of Service part of the header.
+ * @param tl The Total Length part of the header.
+ * @param id The Identification part of the header.
+ * @param flags The Flags part of the header.
+ * @param fragOff The Fragment Offset part of the header.
+ * @param ttl The Time To Live part of the header.
+ * @param protocol The Protocol part of the header.
+ * @param source The Source Address part of the header.
+ * @param destination The Destination Address part of the header.
+ * @param options The Options part of the header.
+ * @returns The checksum of the header.
+ */
 export const getChecksum: (
   IP_VERSION: number[],
   ihl: number[],
